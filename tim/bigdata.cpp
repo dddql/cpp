@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-#define MAXN 5005
-using namespace std;
-
 struct nums{
     int arg[MAXN], len;
     nums(){
