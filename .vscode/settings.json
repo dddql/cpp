@@ -105,4 +105,5 @@
     },
     "background.useDefault": false, //是否使用默认图片
     "cSpell.language": "en,en-GB",
+    "C_Cpp.dimInactiveRegions": false,
 }

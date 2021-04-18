@@ -5,6 +5,7 @@
 #include <stack>
 using namespace std;
 
+const int MOD = 10000;
 string p;
 int i = 0;
 
@@ -44,6 +45,7 @@ int read(){
     int s = 0;
     while(isdigit(p[i]))
         s = s * 10 + (p[i++] - '0');
+    i--;
     return s;
 }
 
@@ -56,13 +58,17 @@ int main()
     while(p[i]!='\0'){
         if(isdigit(p[i]))
             num.push(read());
+        else if(p[i]=='-'&&(!isdigit(p[i-1])||i==0)){
+            i++;
+            num.push(-1 * read());
+        }
         else{
             while(!op.empty()&&cmp_op(op.top(),p[i])){
                 char o = op.top();op.pop();
                 int y = num.top();num.pop();
                 int x = num.top();num.pop();
-                int result = calc(x, o, y);
-                num.push(result);
+                int result = calc(x, o, y)%MOD;
+                num.push(result%MOD);
             }
             op.push(p[i]);
         }
@@ -73,10 +79,10 @@ int main()
         char o = op.top();op.pop();
         int y = num.top();num.pop();
         int x = num.top();num.pop();
-        int result = calc(x, o, y);
-        num.push(result);
+        int result = calc(x, o, y)%MOD;
+        num.push(result%MOD);
     }
 
-    printf("%d", num.top());
+    printf("%d", num.top()%MOD);
     return 0;
 }

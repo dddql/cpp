@@ -1,6 +1,7 @@
 #include <cstdio>
 #include <algorithm>
 #include <cstring>
+#include <cmath>
 using namespace std;
 
 const int LEN = 10010;
@@ -138,10 +139,9 @@ void print(int a[]){                    //*输出答案
     for (; i >= 1;i--){
         int cnt = 4;
         while(cnt--){
-            int t=a[i]
+            int t = a[i];
         }
-        else
-            printf("%c", 'A' + a[i] - 10);
+        printf("%c", 'A' + a[i] - 10);
     }
 }
 
@@ -150,10 +150,7 @@ int main()
     read(a);
     read(b);
 
-    print(a);
-    print(b);
-
-    multi(a, b, c);
+    add(a, b, c);
 
     print(c);
     return 0;

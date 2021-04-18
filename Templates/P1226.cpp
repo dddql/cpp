@@ -5,13 +5,12 @@ long long b, p, k;
 long long result = 1;
 
 void mod(long long b, long long p, long long k) {
-    while(p>0){
+    while(p){
         if(p & 1)
             result =(result* b)%k;
         b = (b * b)%k;
         p >>= 1;
     }
-    return;
 }
 
 int main()

@@ -1,3 +1,7 @@
+#include <bits/stdc++.h>
+#define MAXN 2001
+using namespace std;
+
 struct nums{
     int arg[MAXN], len;
     nums(){

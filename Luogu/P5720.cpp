@@ -1,5 +1,4 @@
 #include <cstdio>
-using namespace std;
 
 int a;
 int cnt=1;

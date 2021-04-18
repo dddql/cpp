@@ -13,8 +13,7 @@ void output()
         {
             if (a[i][j] == '*')
                 printf("*");
-            else
-            {
+            else{
                 int sum = 0;
                 for (int p = 0; p < 8; p++)
                     if (a[i + dx[p]][j + dy[p]] == '*')
@@ -27,7 +26,6 @@ void output()
 int main()
 {
     scanf("%d%d", &n, &m);
-
     for (int i = 1; i <= n; i++)
         scanf("%s", a[i] + 1);
     output();
