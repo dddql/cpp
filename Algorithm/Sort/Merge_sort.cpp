@@ -21,7 +21,7 @@ void mergesort(int l, int r, int ans[], int temp[])
     while (p <= mid && q <= r)
     {
         if (ans[p] < ans[q])
-            temp[i++] = ans[p++]; // t++,p++表示先t=p，再各自++
+            temp[i++] = ans[p++]; // i++,p++表示先i=p，再各自++
         else
             temp[i++] = ans[q++];
     }

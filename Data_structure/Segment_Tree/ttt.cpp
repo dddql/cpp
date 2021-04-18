@@ -57,5 +57,5 @@ void update(LL l,LL r,LL c,LL s,LL t,LL p){
         update(l, r, c, s, mid, p << 1);
     if(r>m)
         update(l, r, c, mid + 1, t, p << 1 | 1);
-    
+    push_up(p);
 }

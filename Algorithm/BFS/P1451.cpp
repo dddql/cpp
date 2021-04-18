@@ -5,13 +5,14 @@ using namespace std;
 
 queue< pair<int, int> > Q;
 
+const int maxn = 105;
 const int dx[4] = {0, 1, 0, -1};
 const int dy[4] = {-1, 0, 1, 0};
 
 int n, m, ans;
 string s;
-bool a[105][105];
-bool visit[105][105];
+bool a[maxn][maxn];
+bool visit[maxn][maxn];
 
 void init(){
     scanf("%d%d", &n, &m);

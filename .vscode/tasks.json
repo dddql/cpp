@@ -10,7 +10,9 @@
             "-g",
             "\"${file}\"",
             "-o",
-            "\"${fileDirname}\\${fileBasenameNoExtension}.exe\""
+            "\"${fileDirname}\\${fileBasenameNoExtension}.exe\"",
+            "-Wall",
+            "-Wshadow"
         ],
         "problemMatcher": {
             "owner": "cpp",

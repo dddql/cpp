@@ -1,17 +1,15 @@
-#include <bits/stdc++.h>
+#include <cstdio>
+#include <cstring>
 using namespace std;
-char pre[50];
-int main()
-{
-    int n;
-    cin >> n >> endl;
-    gets(pre);
-    for (int i = 0; i < 50; i++)
-    {
-        if (pre[i] == 'z')
-            pre[i] = 'a';
-        pre[i] += n;
-    }
-    puts(pre);
+
+const int maxn = 55;
+int n;
+char a[maxn];
+
+int main(){
+    scanf("%d%s", &n, a);
+    for (int i = 0; i < strlen(a); i++)
+        a[i] = (a[i]-'a'+n)%26+'a';
+    printf("%s", a);
     return 0;
 }

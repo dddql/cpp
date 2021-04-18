@@ -1,19 +1,20 @@
 #include <cstdio>
-#define maxn 1050
+#define maxn 65
+typedef long long ll;
 
-int n;
-int a[maxn][maxn];
+ll n;
+ll a[maxn][maxn];
 
 int main()
 {
-    scanf("%d", &n);
+    scanf("%lld", &n);
     a[1][1] = 1;
-    for (int i = 2; i <= n;i++)
-        for (int j = 1; j <= i;j++)
+    for (ll i = 2; i <= n;i++)
+        for (ll j = 1; j <= i;j++)
             a[i][j] = a[i - 1][j - 1] + a[i - 1][j];
-    for (int i = 1; i <= n; i++){
-        for (int j = 1; j <= i; j++)
-            printf("%d ", a[i][j]);
+    for (ll i = 1; i <= n; i++){
+        for (ll j = 1; j <= i; j++)
+            printf("%lld ", a[i][j]);
         printf("\n");
     }
     return 0;
