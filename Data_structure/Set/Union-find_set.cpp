@@ -4,19 +4,30 @@
 #define maxn 5050
 
 struct set{
-    int fa[maxn];
+    int fa[maxn], size[maxn];
 
-    int find(int x){    //*找到x的祖先
-        if(x==fa[x])
-            return x;
-        return fa[x] = find(fa[x]);    //*递归查找的同时更新当前节点祖先
+    void build(int n){
+        for (int i = 1; i <= n;i++)
+            fa[i] = i, size[i] = 1;
     }
 
-    void join(int a, int b){
+    int find(int x){
+        if(x == fa[x])
+            return x;
+        return fa[x] = find(fa[x]);     //*路径压缩
+    }
+
+    void join(int a,int b){
         int f1 = find(a);
         int f2 = find(b);
-        if(f1!=f2)
+        if(size[f1]<size[f2]){          //*按秩合并（启发式合并）
             fa[f1] = f2;
+            size[f2] += size[f1];
+        }
+        else{
+            fa[f2] = f1;
+            size[f1] += size[f2];
+        }
     }
 } s;
 
@@ -26,8 +37,7 @@ int x, y;
 int main()
 {
     scanf("%d%d%d", &n, &m, &p);
-    for (int i = 1; i <= n;i++)
-        s.fa[i] = i;
+    s.build(n);
     for (int i = 1; i <= m;i++){
         scanf("%d%d", &x, &y);
         s.join(x, y);

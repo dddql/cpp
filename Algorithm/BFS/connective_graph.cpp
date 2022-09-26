@@ -27,7 +27,7 @@ void bfs(int x,int y){
         int tx = Q.front().first;
         int ty = Q.front().second;
         Q.pop();
-
+        
         for (int i = 0; i < 4;i++){
             if(a[tx+dx[i]][ty+dy[i]]&&!visit[tx+dx[i]][ty+dy[i]]){
                 Q.push(make_pair(tx + dx[i], ty + dy[i]));

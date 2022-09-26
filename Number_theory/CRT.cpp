@@ -39,3 +39,12 @@ int main()
     printf("%lld", ans % N);
     return 0;
 }
+
+void diandao(){
+    //颠倒的过程；
+}
+int main(){
+    scanf("....");
+    diandao();
+    printf("....");
+}

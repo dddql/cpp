@@ -1,98 +1,185 @@
+#define DLEN 4
+
 #include <cstdio>
+#include <iostream>
 #include <algorithm>
 #include <cstring>
 using namespace std;
 
 const int maxn = 1e4;
 
-struct Bigint{
+struct Bigint
+{
     int a[maxn];
     int len;
 
-    Bigint(int x = 0){
+    Bigint()
+    {
         memset(a, 0, sizeof(a));
-        for (len = 1; x; len++){
-            a[len] = x % 10;
-            x /= 10;
-        }
-        len--;
+        len = 1;
     }
 
-    int &operator[](int i){
+    /*
+    Bigint(const int);
+    Bigint(const char *);*/
+
+    int &operator[](int i)
+    {
         return a[i];
     }
 
-    void flatten(int L){
-        len = L;
-        for (int i = 1; i <= len;i++){
-            if(a[i]>=10){
-                a[i + 1] += a[i] / 10;
-                a[i] %= 10;
-            }
-        }
-        while(!a[len])
-            len--;
+    //*字符串赋值
+    Bigint operator=(const char *num)
+    {
+        len = strlen(num);
+        for (int i = 0; i < len; i++)
+            a[i] = num[len - i - 1] - '0';
+        return *this;
     }
 
-    void print(){
-        for (int i = max(len, 1); i >= 1;i--)
+    //*整数赋值
+    Bigint operator=(const int num)
+    {
+        char s[maxn];
+        sprintf(s, "%d", num);
+        *this = s;
+        return *this;
+    }
+
+    Bigint(const int num) { *this = num; }
+    Bigint(const char *num) { *this = num; }
+
+    bool operator<(const Bigint &x) const
+    {
+        if (len != x.len)
+            return len < x.len;
+        for (int i = len - 1; i >= 0; i--)
+            if (a[i] != x.a[i])
+                return a[i] < x.a[i];
+        return false;
+    }
+
+    bool operator>(const Bigint &x) const { return x < *this; }
+    bool operator<=(const Bigint &x) const { return !(x < *this); }
+    bool operator>=(const Bigint &x) const { return !(*this < x); }
+    bool operator==(const Bigint &x) const { return !(x < *this || *this < x); }
+    bool operator!=(const Bigint &x) const { return x < *this || *this < x; }
+
+    /*
+    Bigint operator+=(const Bigint &a)
+    {
+        *this = *this + a;
+        return *this;
+    }
+
+    Bigint operator*=(const Bigint &a)
+    {
+        *this = *this * a;
+        return *this;
+    }
+    */
+
+    void flatten()
+    {
+        while (!a[len - 1])
+            --len;
+    }
+
+    void print()
+    {
+        for (int i = max(len, 1); i >= 1; i--)
             printf("%d", a[i]);
         printf("\n");
     }
 };
 
-Bigint operator+(Bigint a,Bigint b){
+ostream &operator<<(ostream &out, const Bigint &x)
+{
+    for (int i = x.len - 1; i >= 0; i--)
+        cout << x.a[i];
+    return out;
+}
+
+istream &operator>>(istream &in, Bigint &x)
+{
+    char num[maxn];
+    in >> num;
+    x = num;
+    return in;
+}
+
+Bigint operator+(Bigint a, Bigint b)
+{
     Bigint c;
-    int len = max(a.len, b.len);
-    for (int i = 1; i <= len;i++)
-        c[i] += a[i] + b[i];
-    c.flatten(len + 1);
+    c.len = max(a.len, b.len) + 1;
+    for (int i = 0, x = 0; i < c.len; i++)
+    {
+        c[i] += a[i] + b[i] + x;
+        x = c[i] / 10;
+        c[i] %= 10;
+    }
+    c.flatten();
     return c;
 }
 
-Bigint operator-(Bigint a,Bigint b){
+Bigint operator-(Bigint a, Bigint b)
+{
     Bigint c;
-    int len = max(a.len, b.len);
-    for (int i = 1; i <= len;i++){
+    c.len = max(a.len, b.len) + 1;
+    for (int i = 0; i < c.len; i++)
+    {
         c[i] += a[i] - b[i];
-        if(c[i]<0){
+        if (c[i] < 0)
+        {
             c[i + 1]--;
             c[i] += 10;
         }
     }
-    c.flatten(len + 1);
+    c.flatten();
     return c;
 }
 
-Bigint operator*(Bigint a,int b){
+Bigint operator*(Bigint a, int b)
+{
     Bigint c;
-    int len = a.len;
-    for (int i = 1; i <= len;i++)
-        c[i] = a[i] * b;
-    c.flatten(len + 11);
-    return c;
-}
-
-Bigint operator*(Bigint a,Bigint b){
-    Bigint c;
-    int len = a.len + b.len;
-    for (int i = 1; i <= len;i++){
-        for (int j = 1; j <= i;j++)
-            c[i] += a[j] * b[i - j + 1];
-        if(c[i]>10){
-            c[i + 1] += c[i] / 10;
-            c[i] %= 10;
-        }
+    c.len = a.len + 11;
+    for (int i = 0, x = 0; i < c.len; i++)
+    {
+        c[i] = a[i] * b + x;
+        x = c[i] / 10;
+        c[i] %= 10;
     }
-    c.flatten(len * 2);
+    c.flatten();
+    return c;
+}
+
+Bigint operator*(Bigint a, Bigint b)
+{
+    Bigint c;
+    c.len = a.len + b.len;
+    for (int i = 0; i < a.len; i++)
+        for (int j = 0; j < b.len; j++)
+        {
+            c[i + j] += a[i] * b[j];
+            c[i + j + 1] += c[i + j] / 10;
+            c[i + j] %= 10;
+        }
+    c.flatten();
     return c;
 }
 
 int main()
 {
-    Bigint a, b, c;
-    
-    c = a + b;
-    c.print();
+    Bigint a, b, c, d;
+
+    while (1)
+    {
+        cin >> a >> b;
+
+        c = a + b;
+        d = a * b;
+
+        cout << c << " " << d << endl;
+    }
     return 0;
 }

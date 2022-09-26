@@ -1,3 +1,4 @@
+//!若题目数据非单调不减，需要进行排序
 #include <cstdio>
 #include <string.h>
 #include <vector>
@@ -31,9 +32,9 @@ void add_edge(int u,int v,int w){
     e[u].push_back((edge){v, w});
 }
 
-void Dijkstra(){
-    dis[s] = 0;
-    q.push((node){0, s});
+void Dijkstra(int start){
+    dis[start] = 0;
+    q.push((node){0, start});
     while(!q.empty()){
         node tmp = q.top();
         int x = tmp.pos, d = tmp.dis;
@@ -61,7 +62,7 @@ int main()
         scanf("%d%d%d", &u, &v, &w);
         add_edge(u, v, w);
     }
-    Dijkstra();
+    Dijkstra(s);
     for (int i = 1; i <= n;i++)
         printf("%d ", dis[i]);
     return 0;

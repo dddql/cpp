@@ -1,11 +1,5 @@
 {
     "editor.fontFamily": "'Source Code Pro'",
-    "files.associations": {
-        "iostream": "cpp",
-        "*.tcc": "cpp",
-        "deque": "cpp",
-        "vector": "cpp"
-    },
     "editor.renderWhitespace": "all",
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true,
@@ -13,97 +7,11 @@
     "editor.cursorBlinking": "smooth",
     "editor.cursorSmoothCaretAnimation": true,
     "files.autoGuessEncoding": true,
-    "workbench.iconTheme": "vscode-icons",
-    "workbench.colorTheme": "Community Material Theme Ocean High Contrast",
-    "workbench.view.alwaysShowHeaderActions": true,
-    "bracket-pair-colorizer-2.forceUniqueOpeningColor": true,
-    "bracket-pair-colorizer-2.showBracketsInGutter": true,
-    "bracket-pair-colorizer-2.showBracketsInRuler": true,
     "C_Cpp.default.cppStandard": "c++11",
-    "docthis.includeAuthorTag": true,
-    "docthis.includeDateTag": true,
-    "fileheader.Author": "Victor",
-    "fileheader.LastModifiedBy": "Victor",
-    "todohighlight.isCaseSensitive": false,
-    "todohighlight.keywords": [
-        "DEBUG:",
-        "REVIEW:",
-        {
-            "text": "NOTE:",
-            "color": "#ff0000",
-            "backgroundColor": "yellow",
-            "overviewRulerColor": "grey"
-        },
-        {
-            "text": "HACK:",
-            "color": "#000",
-            "isWholeLine": false,
-        },
-        {
-            "text": "TODO:",
-            "color": "red",
-            "border": "1px solid red",
-            "borderRadius": "2px", //NOTE: using borderRadius along with `border` or you will see nothing change
-            "backgroundColor": "rgba(0,0,0,.2)",
-            //other styling properties goes here ... 
-        }
-    ],
-    "todohighlight.keywordsPattern": "TODO:|FIXME:|", //highlight `TODO:`,`FIXME:` or content between parentheses
-    "todohighlight.defaultStyle": {
-        "color": "red",
-        "backgroundColor": "#ffab00",
-        "overviewRulerColor": "#ffab00",
-        "cursor": "pointer",
-        "border": "1px solid #eee",
-        "borderRadius": "2px",
-        "isWholeLine": false,
-        //other styling properties goes here ... 
-    },
-    "todohighlight.include": [
-        "**/*.js",
-        "**/*.jsx",
-        "**/*.ts",
-        "**/*.tsx",
-        "**/*.html",
-        "**/*.php",
-        "**/*.css",
-        "**/*.scss"
-    ],
-    "todohighlight.exclude": [
-        "**/node_modules/**",
-        "**/bower_components/**",
-        "**/dist/**",
-        "**/build/**",
-        "**/.vscode/**",
-        "**/.github/**",
-        "**/_output/**",
-        "**/*.min.*",
-        "**/*.map",
-        "**/.next/**"
-    ],
-    "todohighlight.maxFilesForSearch": 5120,
-    "todohighlight.isEnable": true,
-    "cSpell.words": [
-        "logu"
-    ],
     "C_Cpp.errorSquiggles": "Disabled",
-    //background 的相关配置
-    "update.enableWindowsBackgroundUpdates": true,
-    "background.customImages": [
-        "file:///C:/Users/86159/Downloads/11628.jpg" //图片地址
-    ],
-    "background.style": {
-        "content": "''",
-        "pointer-events": "none",
-        "position": "absolute", //图片位置
-        "width": "100%",
-        "height": "100%",
-        "z-index": "99999",
-        "background.repeat": "no-repeat",
-        "background-size": "100%,100%", //图片大小
-        "opacity": 0.2 //透明度
-    },
-    "background.useDefault": false, //是否使用默认图片
-    "cSpell.language": "en,en-GB",
     "C_Cpp.dimInactiveRegions": false,
+    "files.associations": {
+        "string_view": "cpp",
+        "regex": "cpp"
+    },
 }

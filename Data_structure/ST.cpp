@@ -19,7 +19,7 @@ inline int read()
         ch = getchar();
     }
     while (isdigit(ch)){
-        x = x * 10 + ch - 48;
+        x = (x << 3) + (x << 1) + (ch - 48);
         ch = getchar();
     }
     return x * f;

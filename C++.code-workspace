@@ -2,13 +2,18 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "C:\\Users\\86159\\Desktop\\check"
 		}
 	],
 	"settings": {
 		"files.associations": {
 			"ostream": "cpp",
 			"cmath": "cpp",
-			"iostream": "cpp"
+			"iostream": "cpp",
+			"iomanip": "cpp",
+			"*.tcc": "cpp"
 		}
 	}
 }

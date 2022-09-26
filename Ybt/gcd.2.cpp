@@ -15,3 +15,18 @@ int main()
 	system("pause");
 	return 0;
 }
+
+while(1)
+{
+	c = a % b;
+	if (c != 0)
+	{
+		a = b;
+		b = c;
+	}
+	else
+	{
+		break;
+	}
+}
+printf("%d", b);

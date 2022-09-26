@@ -66,8 +66,6 @@ void bfs(){
 
 int main()
 {
-    freopen("P1113_2.in", "r", stdin);
-
     build();
 
     for (int i = 1; i <= n;i++)
